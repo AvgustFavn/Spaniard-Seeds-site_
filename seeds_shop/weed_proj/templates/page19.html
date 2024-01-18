@@ -1,0 +1,183 @@
+{% load custom_filters %}
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.6.13, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.6.13, mobirise.com">
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="">
+  <meta property="og:image" content="">
+  <meta name="twitter:title" content="Page 19">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="/assets/images/-100x100.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>{{art.title}}</title>
+  <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="/assets/FontAwesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/assets/icon54/style.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/assets/popup-overlay-plugin/style.css">
+  <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="/assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+  
+</head>
+<body>
+  
+{% include 'base.html' %}
+
+<section data-bs-version="5.1" class="image2 couplem5 cid-u1mztuyt4n" id="image2-2i">
+    
+
+    
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(71, 71, 71);">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="image-wrapper">
+                    <img src="/assets/images/photo-2024-01-13-17-09-46-1280x854.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12 text">
+                <div class="text-wrapper">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content8 programm5 cid-u1mTlMhOwg" id="content8-2k">
+
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="{{art.first}}" alt="Mobirise">
+                </div>
+                <div class="title-wrapper">
+                    <p class="mbr-text mbr-fonts-style display-2">{{art.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 visualm5 cid-u1myDJiTUT" id="content5-2e">
+
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="title-wrapper">
+
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card-wrapper flex-row-reverse">
+
+                    <div class="content-wrap">
+
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            {{art.text}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if art.first %}
+<section data-bs-version="5.1" class="slider1 cid-u1r9BGxl6V" id="slider1-2n">
+
+    <div class="carousel slide" id="u1r9U7r7aV" data-interval="5000" data-bs-interval="5000">
+        <ol class="carousel-indicators">
+            {% if art.first %}
+            <li data-slide-to="0" data-bs-slide-to="0" class="active" data-target="#u1r9U7r7aV" data-bs-target="#u1r9U7r7aV"></li>
+            {% endif %}
+            {% for p in range_ %}
+            <li data-slide-to="{{p}}" data-bs-slide-to="{{p}}" data-target="#u1r9U7r7aV" data-bs-target="#u1r9U7r7aV"></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% if art.first %}
+            <div class="carousel-item slider-image item active">
+                <div class="item-wrapper">
+                    <img class="d-block w-100" src="{{art.first}}" alt="Mobirise Website Builder">
+
+
+                </div>
+            </div>
+            {% endif %}
+            {% for p in art.pics %}
+            <div class="carousel-item slider-image item">
+                <div class="item-wrapper">
+                    <img class="d-block w-100" src="{{p}}" alt="Mobirise Website Builder">
+
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" data-bs-slide="prev" href="#u1r9U7r7aV">
+            <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
+            <span class="sr-only visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control carousel-control-next" role="button" data-slide="next" data-bs-slide="next" href="#u1r9U7r7aV">
+            <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
+            <span class="sr-only visually-hidden">Next</span>
+        </a>
+    </div>
+</section>
+{% endif %}
+<section data-bs-version="5.1" class="content12 cid-u1mPpWBswg" id="content12-2j">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-6">
+                <div class="mbr-section-btn align-center"><a class="btn btn-success display-4" href="/del_article/{{art.id}}">Удалить</a>
+                    <a class="btn btn-success display-4" href="/change_article/{{art.id}}">Изменить</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+
+
+<script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="/assets/ytplayer/index.js"></script>
+  <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="/assets/theme/js/script.js"></script>
+  
+  
+  
+</body>
+</html>
