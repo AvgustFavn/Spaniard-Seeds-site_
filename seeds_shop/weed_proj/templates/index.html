@@ -31,7 +31,20 @@ Spaniard seeds🪴Магазин семян.
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
+  <!-- Begin Talk-Me {literal} -->
+<script>
+    (function(){(function c(d,w,m,i) {
+        window.supportAPIMethod = m;
+        var s = d.createElement('script');
+        s.id = 'supportScript';
+        var id = 'ee9c0a02d31cd56d4779ca657fb209c3';
+        s.src = (!i ? 'https://lcab.talk-me.ru/support/support.js' : 'https://static.site-chat.me/support/support.int.js') + '?h=' + id;
+        s.onerror = i ? undefined : function(){c(d,w,m,true)};
+        w[m] = w[m] ? w[m] : function(){(w[m].q = w[m].q ? w[m].q : []).push(arguments);};
+        (d.head ? d.head : d.body).appendChild(s);
+    })(document,window,'TalkMe')})();
+</script>
+<!-- {/literal} End Talk-Me -->
   
   
   
@@ -189,10 +202,13 @@ Spaniard seeds🪴Магазин семян.
                         <img src="{{p.pics.0}}" alt="">
                     </div>
                     <div class="item-content">
-                        <p class="mbr-text mbr-fonts-style mt-3 mb-0 display-4">{{p.name}}</p>
+                        <p class="mbr-text mbr-fonts-style mt-3 mb-0 display-4"><a href="/product/{{p.id}}">{{p.name}}</a></p>
                         <p class="price mbr-fonts-style mt-2 mb-0 display-7">{{p.price}}р</p>
-                        <div class="mbr-section-btn mt-4 mb-5"><a class="btn btn-success display-4" target="_blank"
-                                                                  href="add_basket/{{p.id}}">Добавить</a></div>
+                        <form action="/add_basket/{{p.id}}" method="POST">
+                            {% csrf_token %}
+                        <div class="mbr-section-btn mt-4 mb-5"><button class="btn btn-success display-4" target="_blank"
+                                                                  href="/add_basket/{{p.id}}">Добавить</button></div>
+                        </form>
                     </div>
                 </div>
             </div>

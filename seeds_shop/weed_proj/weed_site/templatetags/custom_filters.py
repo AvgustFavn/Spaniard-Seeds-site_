@@ -1,8 +1,7 @@
-# custom_filters.py
 from django import template
 
 register = template.Library()
 
-@register.filter(name='isdigit')
-def isdigit(value):
-    return str(value).isdigit()
+@register.filter(name='get')
+def get(dictionary, key):
+    return dictionary.get(key, None)

@@ -39,7 +39,7 @@ def catalog(request, page=None, word=None):
         if word == 'auto':
             if page and page > 1:
                 cat = Category.objects.filter(name='Автоцветущие').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -47,7 +47,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Автоцветущие').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -57,7 +57,7 @@ def catalog(request, page=None, word=None):
         elif word == 'photo':
             if page and page > 1:
                 cat = Category.objects.filter(name='Фотопериодные').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -65,7 +65,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Фотопериодные').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -75,7 +75,7 @@ def catalog(request, page=None, word=None):
         elif word == 'sativa':
             if page and page > 1:
                 cat = Category.objects.filter(name='Сатива').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -83,7 +83,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Сатива').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -93,7 +93,7 @@ def catalog(request, page=None, word=None):
         elif word == 'indicka':
             if page and page > 1:
                 cat = Category.objects.filter(name='Индика').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -101,7 +101,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Индика').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -110,7 +110,7 @@ def catalog(request, page=None, word=None):
         elif word == 'medical':
             if page and page > 1:
                 cat = Category.objects.filter(name='Медицинские').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -118,7 +118,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Медицинские').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -128,7 +128,7 @@ def catalog(request, page=None, word=None):
         elif word == 'beginners':
             if page and page > 1:
                 cat = Category.objects.filter(name='Для новичков').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -136,7 +136,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Для новичков').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -145,7 +145,7 @@ def catalog(request, page=None, word=None):
         elif word == 'short':
             if page and page > 1:
                 cat = Category.objects.filter(name='Невысокие').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -153,7 +153,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Невысокие').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -163,7 +163,7 @@ def catalog(request, page=None, word=None):
         elif word == 'nosense':
             if page and page > 1:
                 cat = Category.objects.filter(name='Слабопахнущие').first()
-                prods = Products.objects.filter(category=cat.id).all()[page * 10:page * 10 + 10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[page * 10:page * 10 + 10]
                 count_rows = Products.objects.all().count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -171,7 +171,7 @@ def catalog(request, page=None, word=None):
                                        'count_rows': count_rows, 'range_': range_, 'admin': admin})
             else:
                 cat = Category.objects.filter(name='Слабопахнущие').first()
-                prods = Products.objects.filter(category=cat.id).all()[:10]
+                prods = Products.objects.filter(category__contains=[cat.id]).all()[:10]
                 count_rows = prods.count()
                 range_ = range(1, count_rows)
                 return render(request, 'page1.html',
@@ -271,6 +271,7 @@ def basket(request):
         session_id = request.COOKIES.get('sessionid', None)
         user_id = get_user_id_from_session(session_id)
         if user_id:
+            user = User.objects.get(id=user_id)
             products = Basket.objects.filter(user_id=user_id)
             full_price = 0.0
             prods = {}
@@ -280,7 +281,7 @@ def basket(request):
                 prods[b.prod_id] = b.count
 
             products.delete()
-            order = Orders.objects.create(user_id=user_id, prods_id=prods, final_price=full_price)
+            order = Orders.objects.create(user_id=user_id, email=user.email, prods_id=prods, final_price=full_price)
             order.save()
             return redirect(f'/confirm_order/{order.id}')
         else:
@@ -302,7 +303,7 @@ def confirm_order(request, order_id):
         pay = request.POST.get('pay')
         post = request.POST.get('post')
         phone = request.POST.get('phone')
-        address = request.POST.get('addres')
+        addres = request.POST.get('addres')
 
         for prod_id, co in order.prods_id.items():
             product = Products.objects.get(id=prod_id)
@@ -314,7 +315,7 @@ def confirm_order(request, order_id):
         order.pay = pay
         order.post = post
         order.phone = phone
-        order.addres = addres
+        order.address = addres
         order.tg = tg
         order.message = message
         order.status = 'Ожидание'
@@ -377,6 +378,12 @@ def profile(request):
         session_id = request.COOKIES.get('sessionid', None)
         user_id = get_user_id_from_session(session_id)
         orders = Orders.objects.filter(user_id=user_id)
+        for o in orders:
+            prods_dict = {}
+            for p in o.prods_id:
+                prod = Products.objects.get(id=int(p))
+                prods_dict[p] = prod.name
+            o.prods_dict = prods_dict
         return render(request, 'page10.html', context={'orders': orders, 'inn': True})
     else:
         return redirect(reverse_lazy('login'))
@@ -395,7 +402,6 @@ def add_product(request):
                 name = request.POST.get('name')
                 price = request.POST.get('price')
                 files = request.FILES.getlist('files')
-                print(files)
                 files_arr = []
                 for uploaded_file in files:
                     # try:
@@ -403,16 +409,24 @@ def add_product(request):
                     files_arr.append(f'/assets/images/{saved_file_name}')
                 # except:
                 #     pass
-                print(files_arr)
-                cat_id = request.POST.get('select')
+                cat_id = int(request.POST.get('select'))
+                cat_id_sec = int(request.POST.get('select2'))
+                cat_id_thr = int(request.POST.get('select3'))
+                cats = []
+                if cat_id != 0:
+                    cats.append(cat_id)
+                if cat_id_sec != 0:
+                    cats.append(cat_id_sec)
+                if cat_id_thr != 0:
+                    cats.append(cat_id_thr)
                 descr = request.POST.get('descr')
                 count = request.POST.get('count')
                 count_pack = request.POST.get('count_pack')
                 if count_pack:
-                    prod = Products.objects.create(name=name, price=float(price), description=descr, pics=files_arr, category=int(cat_id), count=int(count), count_pack=int(count_pack))
+                    prod = Products.objects.create(name=name, price=float(price), description=descr, pics=files_arr, category=cats, count=int(count), count_pack=int(count_pack))
                 else:
                     prod = Products.objects.create(name=name, price=float(price), description=descr, pics=files_arr,
-                                                   category=int(cat_id), count=int(count), count_pack=None)
+                                                   category=cats, count=int(count), count_pack=None)
                 prod.save()
                 return redirect(reverse_lazy('catalog'))
         else:
@@ -422,7 +436,11 @@ def add_basket(request, prod_id):
     if request.method == 'POST':
         session_id = request.COOKIES.get('sessionid', None)
         user_id = get_user_id_from_session(session_id)
-        count = int(request.POST.get("select", None))
+        try:
+            count = int(request.POST.get("select", None))
+        except:
+            count = 1
+
         if user_id:
             bas = Basket.objects.filter(user_id=user_id, prod_id=prod_id).first()
             if bas:
@@ -431,6 +449,7 @@ def add_basket(request, prod_id):
             else:
                 Basket.objects.create(user_id=user_id, prod_id=prod_id, count=count)
             return redirect(f'/product/{prod_id}')
+
         else:
             return redirect(reverse_lazy('login'))
 
@@ -514,7 +533,8 @@ def update_product(request, prod_id):
     if admin:
         if request.method == 'GET':
             prod = Products.objects.get(id=prod_id)
-            return render(request, 'update.html', {'p': prod})
+            cats = Category.objects.all()
+            return render(request, 'update.html', {'p': prod, "cats": cats})
         else:
             prod = Products.objects.get(id=prod_id)
             name = request.POST.get('name')
@@ -535,9 +555,19 @@ def update_product(request, prod_id):
 
             if files_arr:
                 prod.pics = files_arr
-            cat_id = request.POST.get('select')
-            if cat_id != prod.category:
-                prod.category = int(cat_id)
+            cat_id = int(request.POST.get('select'))
+            cat_id_sec = int(request.POST.get('select2'))
+            cat_id_thr = int(request.POST.get('select3'))
+            cats = []
+            if cat_id != 0:
+                cats.append(cat_id)
+            if cat_id_sec != 0:
+                cats.append(cat_id_sec)
+            if cat_id_thr != 0:
+                cats.append(cat_id_thr)
+
+            if cats != prod.category:
+                prod.category = cats
 
             descr = request.POST.get('descr')
             if descr != prod.description:

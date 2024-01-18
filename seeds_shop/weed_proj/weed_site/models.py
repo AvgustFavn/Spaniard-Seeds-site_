@@ -26,13 +26,17 @@ class Products(models.Model):
         models.TextField(),
         null=True
     )
-    category = models.IntegerField(null=True)
+    category = ArrayField(
+        models.IntegerField(null=True),
+        null=True, default=[]
+    )
     count = models.IntegerField(null=True)
     count_pack = models.IntegerField(null=True)
 
 
 class Orders(models.Model):
     user_id = models.IntegerField()
+    email = models.TextField(null=True)
     prods_id = models.JSONField()
     final_price = models.FloatField(null=True)
     status = models.TextField(null=True, default='Создан')

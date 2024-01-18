@@ -75,6 +75,28 @@
     {% endfor %}
 </select>
 </div>
+
+    <div data-for="select" class="col-lg-12 col-md-12 col-sm-12 form-group">
+<label for="select-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Категории доп.</label>
+<select name="select2" data-form-field="select" class="form-control form-select display-7" id="select-formbuilder-1f">
+<option selected value="0">Без категории</option>
+    {% for c in cats %}
+<option value="{{c.id}}">{{c.name}}</option>
+    {% endfor %}
+</select>
+</div>
+
+    <div data-for="select" class="col-lg-12 col-md-12 col-sm-12 form-group">
+<label for="select-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Категории доп.</label>
+<select name="select3" data-form-field="select" class="form-control form-select display-7" id="select-formbuilder-1f">
+<option selected value="0">Без категории</option>
+    {% for c in cats %}
+<option value="{{c.id}}">{{c.name}}</option>
+    {% endfor %}
+</select>
+</div>
+
+
 <div data-for="message" class="col-lg-12 col-md-12 col-sm-12 form-group">
 <label for="message-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Описание</label>
 <textarea name="descr" placeholder="Описание" data-form-field="message" class="form-control display-7" id="message-formbuilder-1f"></textarea>

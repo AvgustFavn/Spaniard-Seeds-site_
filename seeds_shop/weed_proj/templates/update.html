@@ -62,14 +62,34 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="name">
 <label for="name-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Фотографии, до 5 включительно</label>
-<input type="file" name="files" data-form-field="name" class="form-control display-7" multiple required="required" value="" id="name-formbuilder-1f">
+<input type="file" name="files" data-form-field="name" class="form-control display-7" multiple value="" id="name-formbuilder-1f">
 </div>
 
 
 <div data-for="select" class="col-lg-12 col-md-12 col-sm-12 form-group">
-<label for="select-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Категории, выберите заново в любом случае!</label>
+<label for="select-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Категории</label>
 <select name="select" data-form-field="select" class="form-control form-select display-7" id="select-formbuilder-1f">
 <option value="0">Без категории</option>
+    {% for c in cats %}
+<option value="{{c.id}}">{{c.name}}</option>
+    {% endfor %}
+</select>
+</div>
+
+    <div data-for="select" class="col-lg-12 col-md-12 col-sm-12 form-group">
+<label for="select-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Категории доп.</label>
+<select name="select2" data-form-field="select" class="form-control form-select display-7" id="select-formbuilder-1f">
+<option selected value="0">Без категории</option>
+    {% for c in cats %}
+<option value="{{c.id}}">{{c.name}}</option>
+    {% endfor %}
+</select>
+</div>
+
+    <div data-for="select" class="col-lg-12 col-md-12 col-sm-12 form-group">
+<label for="select-formbuilder-1f" class="form-control-label mbr-fonts-style display-7">Категории доп.</label>
+<select name="select3" data-form-field="select" class="form-control form-select display-7" id="select-formbuilder-1f">
+<option selected value="0">Без категории</option>
     {% for c in cats %}
 <option value="{{c.id}}">{{c.name}}</option>
     {% endfor %}
