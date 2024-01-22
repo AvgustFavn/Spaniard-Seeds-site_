@@ -95,7 +95,7 @@
                             <div class="panel-body">
                                 <p class="mbr-fonts-style panel-text display-7">Товары: {% for id, c in ord.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f; text-decoration: underline' href="https://spaniardseeds.online/product/{{id}}">{{ord.prods_dict|get:id}}</a>  X {{c}}
                                     шт.
-				 {% endfor %}
+				                {% endfor %}
                                  <br>Статус: {{ord.status}}<br>Доп инфа от покупателя: <br>{{ord.message}}<br><br>Доп
                                  инфа от администрации: <br>{{ord.admin_mess}}</p><br>
                                 Адрес: {{ord.city}}, {{ord.address}}<br>

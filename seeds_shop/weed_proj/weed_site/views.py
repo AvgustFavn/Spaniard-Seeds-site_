@@ -24,8 +24,11 @@ def home(request):
     revs = Reviews.objects.all()[:10]
     user_id = get_user_id_from_session(request.COOKIES.get('sessionid', None))
     admin = is_admin(user_id)
-    print(admin)
-    return render(request, 'index.html', context={'prods': prods, 'revs': revs, 'inn': inn, 'admin': admin})
+    arts = Article.objects.all()[:2]
+    for art in arts:
+        art.text = art.text[:300]
+
+    return render(request, 'new_index.html', context={'prods': prods, 'revs': revs, 'inn': inn, 'admin': admin, "arts": arts})
 
 def catalog(request, page=None, word=None):
     if request.COOKIES.get('sessionid', None):
@@ -378,12 +381,20 @@ def profile(request):
         session_id = request.COOKIES.get('sessionid', None)
         user_id = get_user_id_from_session(session_id)
         orders = Orders.objects.filter(user_id=user_id)
+
         for o in orders:
             prods_dict = {}
-            for p in o.prods_id:
-                prod = Products.objects.get(id=int(p))
-                prods_dict[p] = prod.name
-            o.prods_dict = prods_dict
+            if o.prods_dict:
+                continue
+            else:
+                for p in o.prods_id:
+                    try:
+                        prod = Products.objects.get(id=int(p))
+                        prods_dict[p] = prod.name
+                    except:
+                        pass
+                o.prods_dict = prods_dict
+                o.save()
         return render(request, 'page10.html', context={'orders': orders, 'inn': True})
     else:
         return redirect(reverse_lazy('login'))
@@ -459,30 +470,33 @@ def product(request, prod_id):
     else:
         inn = False
     if request.method == 'GET':
-        prod = Products.objects.get(id=prod_id)
-        rait = Reviews.objects.filter(prod_id=prod_id).all()
-        middle_rait = 0
-        for r in rait:
-            middle_rait += r.rating
-        if len(rait) == 0 or middle_rait == 0:
+        try:
+            prod = Products.objects.get(id=prod_id)
+            rait = Reviews.objects.filter(prod_id=prod_id).all()
             middle_rait = 0
-        else:
-            middle_rait = int(middle_rait / len(rait))
+            for r in rait:
+                middle_rait += r.rating
+            if len(rait) == 0 or middle_rait == 0:
+                middle_rait = 0
+            else:
+                middle_rait = int(middle_rait / len(rait))
 
-        session_id = request.COOKIES.get('sessionid', None)
-        user_id = get_user_id_from_session(session_id)
-        orders = Orders.objects.filter(user_id=user_id).all()
-        ok = False
-        for o in orders:
-            for k in o.prods_id.keys():
-                if int(k) == int(prod_id):
-                    ok = True
-                    break
+            session_id = request.COOKIES.get('sessionid', None)
+            user_id = get_user_id_from_session(session_id)
+            orders = Orders.objects.filter(user_id=user_id).all()
+            ok = False
+            for o in orders:
+                for k in o.prods_id.keys():
+                    if int(k) == int(prod_id):
+                        ok = True
+                        break
 
-        print(ok)
-        user_id = get_user_id_from_session(request.COOKIES.get('sessionid', None))
-        admin = is_admin(user_id)
-        return render(request, 'page13.html', context={'prod': prod, 'rait': rait, 'middle_rait': range(middle_rait), 'ok': ok, 'inn': inn, "admin": admin, "count": range(1, 20)})
+            print(ok)
+            user_id = get_user_id_from_session(request.COOKIES.get('sessionid', None))
+            admin = is_admin(user_id)
+            return render(request, 'page13.html', context={'prod': prod, 'rait': rait, 'middle_rait': range(middle_rait), 'ok': ok, 'inn': inn, "admin": admin, "count": range(1, 20)})
+        except:
+            return redirect(reverse_lazy('catalog'))
 
     elif request.method == 'POST':
         session_id = request.COOKIES.get('sessionid', None)
@@ -526,6 +540,17 @@ def del_basket(request, prod_id):
             return redirect('/catalog')
         else:
             return redirect(reverse_lazy('login'))
+
+def del_order(request, prod_id):
+    user_id = get_user_id_from_session(request.COOKIES.get('sessionid', None))
+    admin = is_admin(user_id)
+    if admin:
+        order = Orders.objects.filter(id=int(prod_id)).first()
+        order.delete()
+        return redirect('/all_orders')
+    else:
+        return redirect(reverse_lazy('login'))
+
 
 def update_product(request, prod_id):
     user_id = get_user_id_from_session(request.COOKIES.get('sessionid', None))
@@ -640,6 +665,19 @@ def all_orders(request):
     admin = is_admin(user_id)
     if admin:
         orders = Orders.objects.all()
+        for o in orders:
+            prods_dict = {}
+            if o.prods_dict:
+                continue
+            else:
+                for p in o.prods_id:
+                    try:
+                        prod = Products.objects.get(id=int(p))
+                        prods_dict[p] = prod.name
+                    except:
+                        pass
+                o.prods_dict = prods_dict
+                o.save()
         return render(request, 'page15.html', context={'orders': orders})
     else:
         return redirect(reverse_lazy('login'))

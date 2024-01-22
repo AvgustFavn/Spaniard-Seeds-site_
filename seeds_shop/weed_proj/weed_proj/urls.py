@@ -45,6 +45,7 @@ urlpatterns = [
     path('admins_list/', admins_list),
     path('del_admin/<int:adm_id>', delete_admin),
     path('all_orders/', all_orders),
+    path('del_order/<int:prod_id>', del_order),
     path('change_order/<int:order_id>', change_order),
     path('del_review/<int:rev_id>', del_review),
     path('create_article/', create_article),

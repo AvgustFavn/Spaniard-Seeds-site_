@@ -50,6 +50,7 @@ class Orders(models.Model):
     message = models.TextField(null=True)
     admin_mess = models.TextField(null=True)
     data = models.DateField(default=datetime.date.today)
+    prods_dict = models.JSONField(default={})
 
 class Reviews(models.Model):
     user_id = models.IntegerField()
