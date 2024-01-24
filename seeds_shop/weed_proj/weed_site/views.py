@@ -28,7 +28,7 @@ def home(request):
     for art in arts:
         art.text = art.text[:300]
 
-    return render(request, 'new_index.html', context={'prods': prods, 'revs': revs, 'inn': inn, 'admin': admin, "arts": arts})
+    return render(request, 'index.html', context={'prods': prods, 'revs': revs, 'inn': inn, 'admin': admin, "arts": arts})
 
 def catalog(request, page=None, word=None):
     if request.COOKIES.get('sessionid', None):

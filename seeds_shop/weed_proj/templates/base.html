@@ -1,45 +1,113 @@
-<section data-bs-version="5.1" class="menu menu1 programm5 cid-tFcg6m8FPY" once="menu" id="menu1-0">
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #e9ffb9;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 10px; /* Загругленный низ */
+    border-bottom-right-radius: 10px;
+}
+
+.logo-container img {
+    max-width: 80%;
+    height: 80%;
+    margin-right: 10px;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.menu-button {
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid red;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 20px; /* Загругленные углы */
+}
+
+.menu-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid white;
+    border-radius: 20px; /* Загругленные углы */
+    pointer-events: none; /* Позволяет кликать сквозь бордер */
+}
+
+.menu-item {
+    padding: 10px;
+    text-align: center;
+    max-height: 8rem;
+    max-width: 8rem;
+    color: #4e5d2f;
+    text-decoration: none;
+}
 
 
 
-    <nav class="navbar navbar-dropdown navbar-expand-lg">
-        <div class="menu_box container-fluid">
-            <div class="navbar-brand d-flex">
-                <span class="navbar-logo">
-                    <a href="/">
-                        <img src="/assets/images/5904407-100x100.png" alt="Mobirise">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption display-5" href="/">Spaniard Seeds</a></span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #e9ffb9;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.menu-container:hover .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+/* Обновленные стили для значков */
+.menu-item img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+
+
+
+</style>
+<div class="header">
+    <div class="logo-container">
+        <img src="5904407-100x100.png" alt="Лого 1">
+        &nbsp;&nbsp;&nbsp;
+        <img style="height: 5rem; width: 13rem;" src="меню.png" alt="Лого 2">
+    </div>
+    <div class="menu-container">
+        <button class="menu-button">Меню v</button>
+        <div class="dropdown-menu">
+            <div class="menu-item"><a href="/catalog"><img src="каталог.png" alt="Каталог"></a></div>
+            <div class="menu-item"><a href="/sales_delivery"><img src="доставка.png" alt="Доставка Скидки Оплата"></a>
             </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-primary display-4" href="/catalog">Каталог</a></li>
-
-                    <li class="nav-item"><a class="nav-link link text-primary display-4" href="/sales_delivery">Оплата<br>доставка<br>скидки</a></li>
-                    <li class="nav-item"><a class="nav-link link text-primary display-4" href="/legal">Закон</a></li><li class="nav-item"><a class="nav-link link text-primary display-4" href="/reviews">Отзывы</a></li>
-<li class="nav-item"><a class="nav-link link text-primary display-4" href="/all_articles">Наши статьи</a></li></ul>
-
-                {% if inn %}
-                <div class="mbr-section-btn-main" role="tablist"><a class="btn btn-info display-7" href="/basket"><span class="fa fa-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>Корзина&nbsp;</a>
-                    {% if admin %}
-                    <a class="btn btn-danger-outline display-7" href="/admin"><span class="mobi-mbri mobi-mbri-database mbr-iconfont mbr-iconfont-btn"></span>Админ панель&nbsp;</a>
-                    {% endif %}
-                   
- <a class="btn btn-secondary display-7" href="/profile">Мои заказы</a></div>
-                {% else %}
-                <div class="mbr-section-btn-main" role="tablist"><a class="btn btn-info display-7" href="/basket"><span class="fa fa-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>Корзина&nbsp;</a>
-                    <a class="btn btn-secondary display-7" href="/signup">Зарегистрироваться</a></div>
-                {% endif %}
+            <div class="menu-item"><a href="/legal"><img src="закон.png" alt="Закон"></a></div>
+            <div class="menu-item"><a href="/all_articles"><img src="статьи.png" alt="Наши статьи"></a></div>
+            <div class="menu-item"><a href="/reviews"><img src="ыфлиофолвол (1).png" alt="Отзывы"></a></div>
+            <div class="menu-item"><a style="color: #4e5d2f; text-decoration: none;" href="/basket"><h5>Корзина</h5></a>
             </div>
-
+            <div class="menu-item"><a style="color: #4e5d2f; text-decoration: none;" href="/login"><h5>Вход</h5></a>
+            </div>
+            <div class="menu-item"><a style="color: #4e5d2f; text-decoration: none;" href="/admin"><h5>Админ панель</h5>
+            </a></div>
+            <!-- Добавьте другие иконки по аналогии -->
         </div>
-    </nav>
-</section>
+    </div>
+
+</div>
