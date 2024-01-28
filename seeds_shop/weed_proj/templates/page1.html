@@ -100,8 +100,9 @@ Spaniard seeds🪴Магазин семян.
 
 				<div class="text-wrapper align-left" data-form-type="formoid">
 					<!--Formbuilder Form-->
-					<form action="/catalog" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
-						<div class="dragArea row p-0 wrapper">
+					<form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+{% csrf_token %}						
+<div class="dragArea row p-0 wrapper">
 							<div data-for="email" class="col-lg-6 col-md-6 p-0 col-sm-12 form-group">
 								<input type="text" name="text" placeholder="Поиск" data-form-field="email" class="form-control display-7" value="" id="email-form1-5">
 							</div>
