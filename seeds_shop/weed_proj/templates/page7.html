@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.6.13, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.6.13, mobirise.com">
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="">
+  <meta property="og:image" content="">
+  <meta name="twitter:title" content="оформление заказа">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="/assets/images/5904407-100x100.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Оформление заказа</title>
+  <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="/assets/FontAwesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/assets/popup-overlay-plugin/style.css">
+  <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="/assets/theme/css/style.css">
+  <link rel="stylesheet" href="/assets/recaptcha.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+  
+</head>
+<body>
+  
+  {% include 'base.html' %}
+
+<section data-bs-version="5.1" class="content5 electricm5 cid-u0oMFkr50e" id="form2-x">
+
+    
+
+    
+    <div class="mbr-overlay" style="opacity: 0.3; background-color: rgb(27, 27, 27);">
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-5 mbr-form" data-form-type="formoid">
+                <div class="title-wrapper">
+                    <h2 class="mbr-section-title mbr-fonts-style display-5">Последний рубеж!</h2>
+                    <p class="mbr-text mbr-fonts-style display-7">Как только вы заполните форму, мы увидим ваш заказ. Реквизиты для оплаты, трек номер будут написаны здесь! </p>
+                </div>
+                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+                    {% csrf_token %}
+                    <div class="dragArea row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="text">
+                            <label for="text-form2-x" class="form-control-label mbr-fonts-style display-4">Город</label>
+                            <input type="text" name="city" placeholder="" data-form-field="text" required class="form-control display-7" value="" id="text-form2-x">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="email" style="">
+                            <label for="email-form2-x" class="form-control-label mbr-fonts-style display-4">Ваш телеграм ник или ваш номер для связи после оформления заказа</label>
+                            <input type="text" name="tg" placeholder="@username" data-form-field="email" required class="form-control display-7" value="" id="email-form2-x">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="select">
+                            <label mbr-text mbr-theme-style="display-4" class="form-control-label mbr-fonts-style">Желаемый способ оплаты</label>
+                            <select name="pay" data-form-field="select" mbr-theme-style="display-7" class="form-control">
+                                <option value="BTC">BTC</option>
+                                <option value="Тинькофф">Тинькофф</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="select">
+                            <label mbr-text mbr-theme-style="display-4" class="form-control-label mbr-fonts-style">Желаемый способ доставки</label>
+                            <select name="post" data-form-field="select" mbr-theme-style="display-7" class="form-control">
+                                <option value="Почта России">Почта России</option>
+                                
+                                <option value="Сдэк">Сдэк</option>
+                                <option value="Сдэк постомат">Сдэк постомат</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="name" style="">
+                            <label for="name-form2-x" class="form-control-label mbr-fonts-style display-4">ФИО для доставки</label>
+                            <input type="text" name="name" placeholder="Имя" data-form-field="name" class="form-control display-7" required value="" id="name-form2-x">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="name" style="">
+                            <label for="name-form2-x" class="form-control-label mbr-fonts-style display-4">Номер для получения смс от почты</label>
+                            <input type="text" name="phone" placeholder="Телефон" data-form-field="name" class="form-control display-7" required value="" id="name-form2-x">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="name" style="">
+                            <label for="name-form2-x" class="form-control-label mbr-fonts-style display-4">Полный адрес почтомата или адреса доставки (Страну, улица, дом и др.)</label>
+                            <input type="text" name="addres" placeholder="Адресс" data-form-field="name" class="form-control display-7" required value="" id="name-form2-x">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-3" data-for="select">
+                            <label for="email-form2-6" class="form-control-label mbr-fonts-style display-4">Ваше дополнительное сообщение</label>
+                            <input type="text" name="message" placeholder="" data-form-field="email" class="form-control display-7" value="" id="email-form2-6">
+                        </div>
+                        <div class="col-md-auto col mbr-section-btn"><button type="submit" class="btn btn-success display-4">Оформить</button></div>
+                    </div>
+                </form>
+            </div>
+            <!--            <div mbr-form class="col-12 col-lg-4 mbr-form">-->
+            <!--                -->
+            <!--            </div>-->
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+
+
+<script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="/assets/ytplayer/index.js"></script>
+  <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="/assets/theme/js/script.js"></script>
+  <script src="/assets/formoid.min.js"></script>
+  
+  
+  
