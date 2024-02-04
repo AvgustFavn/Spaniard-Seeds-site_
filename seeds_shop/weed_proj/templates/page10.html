@@ -1,0 +1,137 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Site made with Mobirise Website Builder v5.6.13, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.6.13, mobirise.com">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="">
+    <meta property="og:image" content="">
+    <meta name="twitter:title" content="Page 10">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="/assets/images/5904407-100x100.png" type="image/x-icon">
+    <meta name="description" content="">
+<!-- Begin Talk-Me {literal} -->
+<script>
+    (function(){(function c(d,w,m,i) {
+        window.supportAPIMethod = m;
+        var s = d.createElement('script');
+        s.id = 'supportScript';
+        var id = 'ee9c0a02d31cd56d4779ca657fb209c3';
+        s.src = (!i ? 'https://lcab.talk-me.ru/support/support.js' : 'https://static.site-chat.me/support/support.int.js') + '?h=' + id;
+        s.onerror = i ? undefined : function(){c(d,w,m,true)};
+        w[m] = w[m] ? w[m] : function(){(w[m].q = w[m].q ? w[m].q : []).push(arguments);};
+        (d.head ? d.head : d.body).appendChild(s);
+    })(document,window,'TalkMe')})();
+</script>
+<!-- {/literal} End Talk-Me -->
+
+    <title>Ваши заказы</title>
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="/assets/FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/popup-overlay-plugin/style.css">
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap"
+          as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap">
+    </noscript>
+    <link rel="preload"
+          href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"
+          as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+</head>
+<body>
+
+{% include 'base.html' %}
+
+<section data-bs-version="5.1" class="people5 cid-u0oUMBqzvd" id="apeople5-16">
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-title">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Ваши заказы</strong>
+                </h3>
+                <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 display-4">Вы можете следить за
+                    статусом вашего заказа :)</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center accordion-row">
+            <div class="col-12">
+                <div id="bootstrap-accordion_45" class="panel-group accordionStyles accordion" role="tablist"
+                     aria-multiselectable="true">
+                    {% if orders %}
+                    {% for ord in orders %}
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse"
+                               data-bs-toggle="collapse" data-core="" href="#collapse1_45" aria-expanded="false"
+                               aria-controls="collapse1">
+                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-4">Номер заказа {{ord.id}} -
+                                    сумма заказа {{ord.final_price}}</h6>
+                                <span class="sign mbr-iconfont mobi-mbri-arrow-up"></span>
+                            </a>
+                        </div>
+                        <div id="collapse1_45" class="panel-collapse noScroll collapse" role="tabpanel"
+                             aria-labelledby="headingOne" data-parent="#accordion"
+                             data-bs-parent="#bootstrap-accordion_45">
+                            <div class="panel-body">
+                                <p class="mbr-fonts-style panel-text display-7">Товары: {% for id, c in ord.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f; text-decoration: underline' href="https://spaniardseeds.online/product/{{id}}">{{ord.prods_dict|get:id}}</a>  X {{c}}
+                                    шт.
+				                {% endfor %}
+                                 <br>Статус: {{ord.status}}<br>Доп инфа от покупателя: <br>{{ord.message}}<br><br>Доп
+                                 инфа от администрации: <br>{{ord.admin_mess}}</p><br>
+                                Адрес: {{ord.city}}, {{ord.address}}<br>
+                                Контакты покупателя: {{ord.phone}}, {{ord.tg}}, {{ord.email}}. ФИО: {{ord.name}}<br>
+                                Предпочитаемая доставка: {{ord.post}}<br>
+                                Предпочитаемая оплата: {{ord.pay}}<br>
+                                <br>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <br><br><br>
+                    <h5 style="color: black" class="mbr-section-subtitle mbr-fonts-style align-center mb-0 display-4">
+                        Нету заказов :(</h5>
+                    <br><br><br>
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+
+
+<script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/smoothscroll/smooth-scroll.js"></script>
+<script src="/assets/ytplayer/index.js"></script>
+<script src="/assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
+<script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="/assets/theme/js/script.js"></script>
+
+
+</body>
+</html>

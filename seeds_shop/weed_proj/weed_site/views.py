@@ -1,18 +1,21 @@
-from django.contrib import messages
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+import asyncio
+
+from aiogram.utils import executor
+from django.contrib.auth import login
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
 from weed_site.models import *
 from weed_site.models import User
-from weed_site.back import LoginForm, insert_values
 from weed_proj.settings import BASE_DIR
 from weed_site.back import handle_uploaded_file
 from weed_site.back import get_user_id_from_session
 from weed_site.back import is_admin
 from django.db.models import Q
+
+from bot.bot import new_order, new_user
+
+from weed_site.back import send_data_to_socket
 
 
 def home(request):
@@ -359,9 +362,11 @@ def confirm_order(request, order_id):
         phone = request.POST.get('phone')
         addres = request.POST.get('addres')
 
+        text1 = ''
         for prod_id, co in order.prods_id.items():
             product = Products.objects.get(id=prod_id)
             product.count -= co
+            text1 += f'{product.name} - {co} шт.\n'
             product.save()
 
         order.name = name
@@ -373,6 +378,19 @@ def confirm_order(request, order_id):
         order.tg = tg
         order.message = message
         order.status = 'Ожидание'
+        text = f'🛍 У вас новый заказ! 🛍\n' \
+               f'Email покупателя: {order.email}\n' \
+               f'Имя покупателя: {order.name}\n' \
+               f'Контакты: тг - {order.tg}, номер - {order.phone}\n' \
+               f'Предпочтительная оплата: {order.pay}\n' \
+               f'Предпочтительная почта: {order.post}\n' \
+               f'Адрес: {order.city}, {order.address}\n' \
+               f'Товары:\n' \
+               f'{text1}' \
+               f'Полная сумма заказа: {order.final_price}'
+
+        data = {'text_order': text}
+        send_data_to_socket(f'{data}')
         order.save()
         return redirect(f'/profile')  # Пересылка на страницу юзера
 
@@ -391,6 +409,8 @@ def reg_view(request):
             login = email[:email.find('@')]
             user = User.objects.create(email=email, login=login, password_hash=hash_password)
             user.save()
+            data = {'user': email}
+            send_data_to_socket(f'{data}')
             return redirect(reverse_lazy('login'))
         else:
             return render(request, 'page9.html', context={'error': 'Пользователь с таким email уже существует'})

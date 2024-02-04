@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.6.13, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.6.13, mobirise.com">
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="">
+  <meta property="og:image" content="">
+  <meta name="twitter:title" content="отзывы">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="/assets/images/5904407-100x100.png" type="image/x-icon">
+  <meta name="description" content="">
+  <!-- Begin Talk-Me {literal} -->
+<script>
+    (function(){(function c(d,w,m,i) {
+        window.supportAPIMethod = m;
+        var s = d.createElement('script');
+        s.id = 'supportScript';
+        var id = 'ee9c0a02d31cd56d4779ca657fb209c3';
+        s.src = (!i ? 'https://lcab.talk-me.ru/support/support.js' : 'https://static.site-chat.me/support/support.int.js') + '?h=' + id;
+        s.onerror = i ? undefined : function(){c(d,w,m,true)};
+        w[m] = w[m] ? w[m] : function(){(w[m].q = w[m].q ? w[m].q : []).push(arguments);};
+        (d.head ? d.head : d.body).appendChild(s);
+    })(document,window,'TalkMe')})();
+</script>
+<!-- {/literal} End Talk-Me -->
+  
+  <title>Отзывы про нас</title>
+  <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="/assets/FontAwesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/assets/popup-overlay-plugin/style.css">
+  <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="/assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+  
+</head>
+<body>
+  
+   {% include 'base.html' %}
+
+<section data-bs-version="5.1" class="people3 shopm5 cid-u0kyGr1Yzm" id="apeople3-o">
+    
+
+    
+    
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style mb-0 display-2"><strong>Последние отзывы</strong></h3>
+            <h5 class="mbr-section-subtitle mbr-fonts-style mb-0 display-4">Что писали наши покупатели о нашем товаре :)</h5>
+        </div>
+        <div class="row cards-row align-items-stretch justify-content-center">
+            {% if revs %}
+            {% for r in revs %}
+            <div class="card col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <div class="item-img">
+                        <img src="/assets/images/user.png" alt="Mobirise Website Builder">
+                    </div>
+                    <h5 class="card-title mbr-fonts-style display-4">
+                        <strong>{% for _ in "x"|ljust:r.rating %}⭐️{% endfor %}</strong>
+
+                    </h5>
+                    <h5 class="card-subtitle mbr-fonts-style mb-0 display-7">{{r.comment}}</h5>
+                    <div class="card-bottom-wrap">
+                        <p class="card-name mbr-fonts-style mb-0 display-7"><strong>{{r.user_name}}</strong></p>
+                        <p class="card-text mbr-fonts-style mb-0 display-7"><a href="/catalog/{{r.prod_id}}">{{r.prod_name}}</a></p>
+                        {% if admin %}
+                        <a href="/del_review/{{r.id}}" class="card-text mbr-fonts-style mb-0" style="color: #c50000" mbr-theme-style="display-7" mbr-if="showText" data-app-selector=".card-text"><b>Удалить отзыв</b></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <br><br><br>
+            <h5 class="mbr-section-subtitle mbr-fonts-style mb-0 display-4">Пока отзывов нету...</h5>
+            <br><br><br>
+            {% endif %}
+
+
+
+        </div>
+    </div>
+</section>
+<br><br><br><br><br><br>
+
+{% include 'footer.html' %}
+
+
+<script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="/assets/ytplayer/index.js"></script>
+  <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="/assets/theme/js/script.js"></script>
+  
+  
+  
+</body>
+</html>
