@@ -1,5 +1,6 @@
 import os
 import socket
+import time
 
 from django import forms
 from django.contrib.sessions.models import Session
@@ -12,13 +13,22 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 def send_data_to_socket(data):
-    host = '127.0.0.1'  # Замените на IP-адрес, на котором запущен сокет-сервер
-    port = 8381  # Замените на порт, который вы указали для сокет-сервера
+    host = '127.0.0.1'
+    port = 8381
 
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((host, port))
-    client_socket.send(data.encode('utf-8'))
-    client_socket.close()
+    try:
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.connect((host, port))
+        client_socket.send(data.encode('utf-8'))
+
+        # Флушим буфер
+        client_socket.shutdown(socket.SHUT_WR)
+
+    except Exception as e:
+        print(f"Ошибка при отправке данных: {e}")
+
+    finally:
+        client_socket.close()
 
 def insert_values():
     Category.objects.create(name='Автоцветущие')
