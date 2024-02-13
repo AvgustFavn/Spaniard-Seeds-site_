@@ -46,68 +46,8 @@
 
 {% include 'base.html' %}
 
-<section data-bs-version="5.1" class="people5 cid-u0Nzb8yg8S" id="apeople5-1u">
+  <section data-bs-version="5.1" class="features11 programm5 cid-u4aIBGqJMr" id="features11-3e">
 
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-title">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Заказы
-                    пользователей</strong></h3>
-                <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 display-4">Вы можете следить за
-                    поступлением заказов</h5>
-            </div>
-        </div>
-        <div class="row justify-content-center accordion-row">
-            <div class="col-12">
-                <div id="bootstrap-accordion_59" class="panel-group accordionStyles accordion" role="tablist"
-                     aria-multiselectable="true">
-                    {% if orders %}
-                    {% for o in orders %}
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse"
-                               data-bs-toggle="collapse" data-core="" href="#collapse1_59" aria-expanded="false"
-                               aria-controls="collapse1">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-4">Номер заказа: {{o.id}} -
-                                    сумма: {{o.final_price}}р</h6>
-                                <span class="sign mbr-iconfont mobi-mbri-arrow-up"></span>
-                            </a>
-                        </div>
-                        <div id="collapse1_59" class="panel-collapse noScroll collapse" role="tabpanel"
-                             aria-labelledby="headingOne" data-parent="#accordion"
-                             data-bs-parent="#bootstrap-accordion_59">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">Товары: {% for id, c in o.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f' href="https://spaniardseeds.online/product/{{id}}">https://spaniardseeds.online/product/{{id}}</a>  X {{c}}
-                                    шт. {% endfor %}
-                                    <br>Статус: {{o.status}}<br>Доп инфа от покупателя: <br>{{o.message}}<br><br>Доп
-                                    инфа от администрации: <br>{{o.admin_mess}}</p><br>
-                                Адрес: {{o.city}}, {{o.address}}<br>
-                                Контакты покупателя: {{o.phone}}, {{o.tg}}, {{o.email}}. ФИО: {{o.name}}<br>
-                                Предпочитаемая доставка: {{o.post}}<br>
-                                Предпочитаемая оплата: {{o.pay}}<br>
-                                <br>
-                                <a href="/change_order/{{o.id}}" target="_blank" class="text-success">Изменить Статус
-                                    или сообщение для пользователя</a><br><br><a href="/del_order/{{o.id}}" class="text-danger">Удалить этот заказ</a></p>
-
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% else %}
-                    <br><br><br>
-                    <h5 style="color: black" class="mbr-section-subtitle mbr-fonts-style align-center mb-0 display-4">
-                        Нету заказов :(</h5>
-                    <br><br><br>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-  <section data-bs-version="5.1" class="list02 smartm5 cid-u49tiTemhZ" id="list02-3d">
 
 
 
@@ -115,29 +55,24 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-lg-4">
                 <div class="title-wrapper">
-                    <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Ваши заказы</strong></h2>
+                    <h2 class="mbr-section-title mbr-fonts-style display-2">Ваши заказы</h2>
                 </div>
             </div>
-            <div class="col-12">
-                <div id="bootstrap-accordion_43" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
+            <div class="col-12 col-lg-8">
+                <div class="cards-wrapper">
                     {% if orders %}
                     {% for ord in orders %}
-                    <div class="card">
-                        <div class="card-header" role="tab" id="heading{{ord.id}}">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse{{ord.id}}_43" aria-expanded="false" aria-controls="collapse{{ord.id}}">
-                                <h4 class="panel-title-edit mbr-fonts-style display-5">
-                                    <strong>Номер заказа {{ord.id}} -
-                                    сумма заказа {{ord.final_price}}</strong>
-                                </h4>
-                                <span class="sign mbr-iconfont mobi-mbri-arrow-down mobi-mbri"></span>
-                            </a>
+                    <div class="card-wrapper">
+                        <div class="title-wrap">
+                            <h3 class="mbr-card-title mbr-fonts-style display-7">
+                                Номер заказа {{ord.id}} -
+                                    сумма заказа {{ord.final_price}}
+                            </h3>
                         </div>
-                        <div id="collapse1_43" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_43">
-                            <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">
-                                    Товары: {% for id, c in ord.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f; text-decoration: underline' href="https://spaniardseeds.online/product/{{id}}">{{ord.prods_dict|get:id}}</a>  X {{c}}
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            Товары: {% for id, c in ord.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f; text-decoration: underline' href="https://spaniardseeds.online/product/{{id}}">{{ord.prods_dict|get:id}}</a>  X {{c}}
                                     шт.
 				                {% endfor %}
                                  <br>Статус: {{ord.status}}<br>Доп инфа от покупателя: <br>{{ord.message}}<br><br>Доп
@@ -147,25 +82,25 @@
                                 Предпочитаемая доставка: {{ord.post}}<br>
                                 Предпочитаемая оплата: {{ord.pay}}<br>
                                 <br>
-                                <a href="/change_order/{{ord.id}}" target="_blank" class="text-success">Изменить Статус
+                            <a href="/change_order/{{ord.id}}" target="_blank" class="text-success">Изменить Статус
                                     или сообщение для пользователя</a><br><br><a href="/del_order/{{ord.id}}" class="text-danger">Удалить этот заказ</a>
-                                </p>
-                            </div>
-                        </div>
+                        </p>
                     </div>
                     {% endfor %}
                     {% else %}
                     <br><br><br><br>
-                    <h4 class="panel-title-edit mbr-fonts-style display-5">
-                                    <strong>Заказов нет</strong>
-                                </h4>
+                    <h3 class="mbr-card-title mbr-fonts-style display-7">
+                                Пока заказов - нет
+                            </h3>
                     <br><br><br><br>
                     {% endif %}
+
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 {% include 'footer.html' %}
 
