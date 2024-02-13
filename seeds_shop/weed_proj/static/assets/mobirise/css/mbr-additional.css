@@ -4233,15 +4233,15 @@ a {
 .cid-tFcguy0QTa .list_main {
   color: #E3B4FA;
 }
-.cid-u0oUMBqzvd {
+.cid-u49tiTemhZ {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: #7b836a;
+  background-color: #f6fdec;
 }
-.cid-u0oUMBqzvd .mbr-fallback-image.disabled {
+.cid-u49tiTemhZ .mbr-fallback-image.disabled {
   display: none;
 }
-.cid-u0oUMBqzvd .mbr-fallback-image {
+.cid-u49tiTemhZ .mbr-fallback-image {
   display: block;
   background-size: cover;
   background-position: center center;
@@ -4250,88 +4250,87 @@ a {
   position: absolute;
   top: 0;
 }
-.cid-u0oUMBqzvd .col-title {
-  position: relative;
-  z-index: 10;
-  margin-bottom: 2.5rem;
+@media (max-width: 992px) {
+  .cid-u49tiTemhZ .container {
+    padding: 0 24px;
+  }
 }
-.cid-u0oUMBqzvd .mbr-section-title {
-  color: #ffffff;
+.cid-u49tiTemhZ .row {
+  justify-content: center;
 }
-.cid-u0oUMBqzvd .mbr-section-subtitle {
-  color: #ffffff;
-  margin-top: 1rem;
+.cid-u49tiTemhZ .title-wrapper .mbr-section-title {
+  margin-bottom: 64px;
 }
-.cid-u0oUMBqzvd .panel-group {
+@media (max-width: 992px) {
+  .cid-u49tiTemhZ .title-wrapper .mbr-section-title {
+    margin-bottom: 32px;
+  }
+}
+.cid-u49tiTemhZ .panel-group .card {
   border: none;
-  padding: 0 !important;
+  border-radius: 40px;
   background-color: #ffffff;
+  margin-bottom: 32px;
+  min-width: 40px;
 }
-.cid-u0oUMBqzvd .card {
-  padding: 0 !important;
-  border-radius: 0 !important;
+.cid-u49tiTemhZ .panel-group .card .card-header {
+  padding: 40px;
+  border: none;
+  background-color: transparent;
 }
-.cid-u0oUMBqzvd .card:not(:first-child) {
-  border-top: 1px solid #bbbbbb;
+@media (max-width: 992px) {
+  .cid-u49tiTemhZ .panel-group .card .card-header {
+    padding: 24px;
+  }
 }
-.cid-u0oUMBqzvd .card-header {
-  border-bottom: none !important;
-  padding: 0 !important;
-}
-.cid-u0oUMBqzvd .card-header .mbr-iconfont {
-  font-size: 10px !important;
-  font-family: 'Moririse2' !important;
-  color: #1f1d1a;
-  margin-left: 1rem;
-  padding: 17px;
-  background-color: #95ff47;
-  transition: all ease-in-out 0.3s;
-  border-radius: 50%;
-}
-.cid-u0oUMBqzvd .card-header .panel-title[aria-expanded="true"] .mbr-iconfont {
-  transform: rotate(-180deg);
-}
-.cid-u0oUMBqzvd .panel-title {
-  padding: 2rem !important;
+.cid-u49tiTemhZ .panel-group .card .card-header .panel-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-@media (max-width: 767px) {
-  .cid-u0oUMBqzvd .panel-title {
-    padding: 20px !important;
-  }
+.cid-u49tiTemhZ .panel-group .card .card-header .panel-title:not(.collapsed) .mbr-iconfont {
+  transform: rotate(180deg);
 }
-.cid-u0oUMBqzvd .panel-title:hover {
-  text-decoration-line: none !important;
+.cid-u49tiTemhZ .panel-group .card .card-header .panel-title:hover .mbr-iconfont {
+  transform: rotate(180deg);
 }
-.cid-u0oUMBqzvd .panel-title:hover .panel-title-edit {
-  text-decoration: underline !important;
-}
-.cid-u0oUMBqzvd .panel-body {
-  padding: 0 2rem 2rem 2rem;
-  width: 100%;
-  max-width: 720px;
-}
-@media (max-width: 767px) {
-  .cid-u0oUMBqzvd .panel-body {
-    padding: 0 20px 20px 20px;
-  }
-}
-.cid-u0oUMBqzvd .panel-text {
-  margin-bottom: 0;
-  color: #353535;
-}
-.cid-u0oUMBqzvd .card .card-header {
-  background-color: transparent;
+.cid-u49tiTemhZ .panel-group .card .card-header .panel-title .panel-title-edit {
   margin-bottom: 0;
 }
-.cid-u0oUMBqzvd .panel-title-edit {
-  color: #1F1D1A;
-  padding-right: 12px;
+.cid-u49tiTemhZ .panel-group .card .card-header .panel-title .mbr-iconfont {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #4e5d2f;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
 }
-.cid-u0oUMBqzvd .mbr-section-btn {
-  margin-top: 10px;
+.cid-u49tiTemhZ .panel-group .card .panel-collapse .panel-body {
+  padding: 0 40px 40px;
+}
+@media (max-width: 992px) {
+  .cid-u49tiTemhZ .panel-group .card .panel-collapse .panel-body {
+    padding: 0 24px 24px;
+  }
+}
+.cid-u49tiTemhZ .panel-group .card .panel-collapse .panel-body .panel-text {
+  margin-bottom: 0;
+}
+.cid-u49tiTemhZ .mbr-section-title {
+  color: #4e5d2f;
+  text-align: center;
+}
+.cid-u49tiTemhZ .panel-title-edit {
+  color: #4e5d2f;
+}
+.cid-u49tiTemhZ .panel-text {
+  color: #262642;
 }
 .cid-tFcguy0QTa {
   padding-top: 5rem;

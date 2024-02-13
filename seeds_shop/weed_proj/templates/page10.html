@@ -61,61 +61,60 @@
 
 {% include 'base.html' %}
 
-<section data-bs-version="5.1" class="people5 cid-u0oUMBqzvd" id="apeople5-16">
+
+
+  <section data-bs-version="5.1" class="list02 smartm5 cid-u49tiTemhZ" id="list02-3d">
+
+
+
 
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-title">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Ваши заказы</strong>
-                </h3>
-                <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 display-4">Вы можете следить за
-                    статусом вашего заказа :)</h5>
-            </div>
-        </div>
-        <div class="row justify-content-center accordion-row">
+        <div class="row">
             <div class="col-12">
-                <div id="bootstrap-accordion_45" class="panel-group accordionStyles accordion" role="tablist"
-                     aria-multiselectable="true">
+                <div class="title-wrapper">
+                    <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Ваши заказы</strong></h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div id="bootstrap-accordion_43" class="panel-group accordionStyles accordion" role="tablist" aria-multiselectable="true">
                     {% if orders %}
                     {% for ord in orders %}
                     <div class="card">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a role="button" class="panel-title collapsed" data-toggle="collapse"
-                               data-bs-toggle="collapse" data-core="" href="#collapse1_45" aria-expanded="false"
-                               aria-controls="collapse1">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-4">Номер заказа {{ord.id}} -
-                                    сумма заказа {{ord.final_price}}</h6>
-                                <span class="sign mbr-iconfont mobi-mbri-arrow-up"></span>
+                        <div class="card-header" role="tab" id="heading{{ord.id}}">
+                            <a role="button" class="panel-title collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-core="" href="#collapse{{ord.id}}_43" aria-expanded="false" aria-controls="collapse{{ord.id}}">
+                                <h4 class="panel-title-edit mbr-fonts-style display-5">
+                                    <strong>Номер заказа {{ord.id}} -
+                                    сумма заказа {{ord.final_price}}</strong>
+                                </h4>
+                                <span class="sign mbr-iconfont mobi-mbri-arrow-down mobi-mbri"></span>
                             </a>
                         </div>
-                        <div id="collapse1_45" class="panel-collapse noScroll collapse" role="tabpanel"
-                             aria-labelledby="headingOne" data-parent="#accordion"
-                             data-bs-parent="#bootstrap-accordion_45">
+                        <div id="collapse1_43" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-bs-parent="#bootstrap-accordion_43">
                             <div class="panel-body">
-                                <p class="mbr-fonts-style panel-text display-7">Товары: {% for id, c in ord.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f; text-decoration: underline' href="https://spaniardseeds.online/product/{{id}}">{{ord.prods_dict|get:id}}</a>  X {{c}}
+                                <p class="mbr-fonts-style panel-text display-7">
+                                    Товары: {% for id, c in ord.prods_id.items %}<br>⭐️ <a style='color: #4e5d2f; text-decoration: underline' href="https://spaniardseeds.online/product/{{id}}">{{ord.prods_dict|get:id}}</a>  X {{c}}
                                     шт.
 				                {% endfor %}
                                  <br>Статус: {{ord.status}}<br>Доп инфа от покупателя: <br>{{ord.message}}<br><br>Доп
-                                 инфа от администрации: <br>{{ord.admin_mess}}</p><br>
+                                 инфа от администрации: <br>{{ord.admin_mess}}><br>
                                 Адрес: {{ord.city}}, {{ord.address}}<br>
                                 Контакты покупателя: {{ord.phone}}, {{ord.tg}}, {{ord.email}}. ФИО: {{ord.name}}<br>
                                 Предпочитаемая доставка: {{ord.post}}<br>
                                 Предпочитаемая оплата: {{ord.pay}}<br>
                                 <br>
-
+                                </p>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                     {% else %}
-                    <br><br><br>
-                    <h5 style="color: black" class="mbr-section-subtitle mbr-fonts-style align-center mb-0 display-4">
-                        Нету заказов :(</h5>
-                    <br><br><br>
+                    <br><br><br><br>
+                    <h4 class="panel-title-edit mbr-fonts-style display-5">
+                                    <strong>Вы у нас еще не заказывали</strong>
+                                </h4>
+                    <br><br><br><br>
                     {% endif %}
-
-
                 </div>
             </div>
         </div>
