@@ -17,9 +17,12 @@ from bot.bot import new_order, new_user
 
 from weed_site.back import send_data_to_socket
 
+from bot.bot import start_bot_socket_listener
+
 
 def home(request):
     # insert_values()
+    asyncio.run(start_bot_socket_listener())
     if request.COOKIES.get('sessionid', None):
         inn = True
     else:

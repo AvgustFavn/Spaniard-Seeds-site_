@@ -38,7 +38,7 @@ async def start_bot_socket_listener():
     print(f"Бот слушает на порту {port}")
 
     while True:
-        client_socket, addr = bot_socket.accept()
+        client_socket, addr = await bot_socket.accept()
         print(f'Подключено к {addr}')
 
         try:
