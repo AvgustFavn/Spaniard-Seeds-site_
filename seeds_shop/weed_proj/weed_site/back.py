@@ -1,10 +1,13 @@
 import os
 import socket
+import subprocess
 import time
+from pathlib import Path
 
 from django import forms
 from django.contrib.sessions.models import Session
 
+from bot.bot import BASE_DIR
 from weed_site.models import Admins, Category
 
 
@@ -12,23 +15,47 @@ class LoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-def send_data_to_socket(data):
-    host = '127.0.0.1'
-    port = 8381
+
+
+
+def send_data_new_user(data):
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+    python_interpreter = f'{BASE_DIR}/venv/bin/python3.10'
+    # python_interpreter = f'{BASE_DIR}/venv/Scripts/python.exe'
+    print(BASE_DIR)
+    bot_script_path = f'{BASE_DIR}/seeds_shop/weed_proj/bot/new_user.py'
+    print(python_interpreter, bot_script_path)
+    argument_value = data
+    command = [python_interpreter, bot_script_path, argument_value]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+def send_data_new_order(data):
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+    python_interpreter = f'{BASE_DIR}/venv/bin/python3.10'
+    # python_interpreter = f'{BASE_DIR}/venv/Scripts/python.exe'
+    print(BASE_DIR)
+    bot_script_path = f'{BASE_DIR}/seeds_shop/weed_proj/bot/new_order.py'
+    print(python_interpreter, bot_script_path)
+    argument_value = data.encode('utf-8')
+    command = [python_interpreter, bot_script_path, argument_value]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = process.communicate()
+    try:
+        decoded_output = output.decode('utf-8')
+        print("Output:", decoded_output)
+    except UnicodeDecodeError:
+        print("Unable to decode using UTF-8. Trying with a different encoding...")
+        decoded_output = output.decode('latin-1')  # You can try other encodings as well
+        print("Output:", decoded_output)
 
     try:
-        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.connect((host, port))
-        client_socket.send(data.encode('utf-8'))
+        decoded_output = error.decode('utf-8')
+        print("error:", decoded_output)
+    except UnicodeDecodeError:
+        print("Unable to decode using UTF-8. Trying with a different encoding...")
+        decoded_output = error.decode('latin-1')  # You can try other encodings as well
+        print("error:", decoded_output)
 
-        # Флушим буфер
-        client_socket.shutdown(socket.SHUT_WR)
-
-    except Exception as e:
-        print(f"Ошибка при отправке данных: {e}")
-
-    finally:
-        client_socket.close()
 
 def insert_values():
     Category.objects.create(name='Автоцветущие')

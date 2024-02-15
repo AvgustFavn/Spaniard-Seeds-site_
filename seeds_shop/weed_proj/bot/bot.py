@@ -64,7 +64,6 @@ async def start_bot_socket_listener():
 # Обработчик команды /start
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    await start_bot_socket_listener()
     user_id = message.from_user.id
     user = session.query(User_tg).filter(User_tg.tg_id == user_id).first()
     if user == None:

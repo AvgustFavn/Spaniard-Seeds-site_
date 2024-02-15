@@ -8,21 +8,20 @@ from django.urls import reverse_lazy
 from weed_site.models import *
 from weed_site.models import User
 from weed_proj.settings import BASE_DIR
-from weed_site.back import handle_uploaded_file
+from weed_site.back import handle_uploaded_file, send_data_new_user, send_data_new_order
 from weed_site.back import get_user_id_from_session
 from weed_site.back import is_admin
 from django.db.models import Q
 
 from bot.bot import new_order, new_user
 
-from weed_site.back import send_data_to_socket
+# from weed_site.back import send_data_to_socket
 
 from bot.bot import start_bot_socket_listener
 
 
 def home(request):
     # insert_values()
-    asyncio.run(start_bot_socket_listener())
     if request.COOKIES.get('sessionid', None):
         inn = True
     else:
@@ -381,7 +380,7 @@ def confirm_order(request, order_id):
         order.tg = tg
         order.message = message
         order.status = 'Ожидание'
-        text = f'🛍 У вас новый заказ! 🛍\n' \
+        text = f' У вас новый заказ! \n' \
                f'Email покупателя: {order.email}\n' \
                f'Имя покупателя: {order.name}\n' \
                f'Контакты: тг - {order.tg}, номер - {order.phone}\n' \
@@ -392,8 +391,8 @@ def confirm_order(request, order_id):
                f'{text1}' \
                f'Полная сумма заказа: {order.final_price}'
 
-        data = {'text_order': text}
-        send_data_to_socket(f'{data}')
+
+        send_data_new_order(text)
         order.save()
         return redirect(f'/profile')  # Пересылка на страницу юзера
 
@@ -413,7 +412,7 @@ def reg_view(request):
             user = User.objects.create(email=email, login=login, password_hash=hash_password)
             user.save()
             data = {'user': email}
-            send_data_to_socket(f'{data}')
+            send_data_new_user(email)
             return redirect(reverse_lazy('login'))
         else:
             return render(request, 'page9.html', context={'error': 'Пользователь с таким email уже существует'})
