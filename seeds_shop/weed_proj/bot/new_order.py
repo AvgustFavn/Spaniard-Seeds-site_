@@ -30,8 +30,6 @@ async def main(somwthing):
     users = session.query(User_tg).all()
     for u in users:
         await bot.send_message(text=text, chat_id=u.tg_id)
-
-    time.sleep(7)
     await bot.close()
 
 if __name__ == '__main__':

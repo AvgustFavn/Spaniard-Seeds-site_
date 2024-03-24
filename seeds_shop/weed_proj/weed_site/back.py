@@ -39,23 +39,6 @@ def send_data_new_order(data):
     argument_value = data.encode('utf-8')
     command = [python_interpreter, bot_script_path, argument_value]
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output, error = process.communicate()
-    try:
-        decoded_output = output.decode('utf-8')
-        print("Output:", decoded_output)
-    except UnicodeDecodeError:
-        print("Unable to decode using UTF-8. Trying with a different encoding...")
-        decoded_output = output.decode('latin-1')  # You can try other encodings as well
-        print("Output:", decoded_output)
-
-    try:
-        decoded_output = error.decode('utf-8')
-        print("error:", decoded_output)
-    except UnicodeDecodeError:
-        print("Unable to decode using UTF-8. Trying with a different encoding...")
-        decoded_output = error.decode('latin-1')  # You can try other encodings as well
-        print("error:", decoded_output)
-
 
 def insert_values():
     Category.objects.create(name='Автоцветущие')
